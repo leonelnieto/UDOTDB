@@ -14,12 +14,12 @@
     <!-- Page level plugin CSS-->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin.css" rel="stylesheet">
-    <link href="css/udotdb.css" rel="stylesheet">
+    <link href="../css/sb-admin.css" rel="stylesheet">
+    <link href="../css/udotdb.css" rel="stylesheet">
   </head>
   <body id="page-top">
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-      <a class="navbar-brand mr-1" href="index.html">UDOT Dashboard</a>
+      <a class="navbar-brand mr-1" href="../index.html">UDOT Dashboard</a>
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
       </button>
@@ -28,7 +28,7 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="../index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Main Dashboard</span>
           </a>
@@ -41,7 +41,7 @@
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <h6 class="dropdown-header">Divisions</h6>
             <a class="dropdown-item" href="404.html">Traffic Mgmnt</a>
-            <a class="dropdown-item" href="register.html">Traffic &amp; Safety</a>
+            <a class="dropdown-item" href="traffic-safety.html">Traffic &amp; Safety</a>
             <a class="dropdown-item" href="404.html">Equipment</a>
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">Regions</h6>
@@ -77,17 +77,93 @@
             <span>Freeeway Metrics</span></a>
         </li>
       </ul>
+
       <div id="content-wrapper">
         <div class="container-fluid">
-          <!--404 error this page was not found-->
-          <div class="row">
-            <div class="col-12 text-center">
-              <div class="card-title">404 Error! The page does not exist!!!</div>
-              <img src="img/PirateBot.JPG">
-              
+          <!--Region Selector Buttons-->
+            <div class="row p-1">
+                <div class="col-lg-12">
+                    <h2 class="section-header text-center">Traffic &amp; Safety Dashboard</h2>
+                    <div class="mx-auto text-center">
+                        <button type="button" class="btn btn-outline-dark active" aria-pressed="false">Statewide</button>
+                        <button type="button" class="btn btn-outline-dark">Region 1</button>
+                        <button type="button" class="btn btn-outline-dark">Region 2</button>
+                        <button type="button" class="btn btn-outline-dark">Region 3</button>
+                        <button type="button" class="btn btn-outline-dark">Region 4</button>
+                    </div>
+                </div>
             </div>
-          </div>
+          <!-- Icon Cards for KPI. Crashes, Fatalities, Serious Injuries by day, week, month, quarter, year -->
+            <div class="row py-1 text-center">
+                <div class="col-lg-12">
+                    <button type="button" class="btn btn-outline-secondary btn-sm active" aria-pressed="false">This Week</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm">This Month</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm">This Quarter</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm">This Year</button>
+                </div>
+            </div>
+            <div class="row py-1 text-center">
+                <div class="col-xl-4 col-sm-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header">Traffic Crashes</div>
+                        <div class="card-body">
+                            <div class="float-left pl-5">
+                                <h3 class="card-title text-danger">353</h3>
+                                <h6 class="card-title">Actual</h6>
+                            </div>
+                            <i class="fas fa-car-crash fa-3x"></i>
+                            <div class="float-right pr-5">
+                                <h3 class="card-title text-success">353</h3>
+                                <h6 class="card-title">Target</h6>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="progress"><div class="progress-bar bg-warning" style="width:70%">70%</div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-sm-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header">Traffic Serious Injuries</div>
+                        <div class="card-body">
+                            <div class="float-left pl-5">
+                                <h3 class="card-title text-danger">353</h3>
+                                <h6 class="card-title">Actual</h6>
+                            </div>
+                            <i class="fas fa-user-injured fa-3x"></i>
+                            <div class="float-right pr-5">
+                                <h3 class="card-title text-success">353</h3>
+                                <h6 class="card-title">Target</h6>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="progress"><div class="progress-bar bg-success" style="width:50%">50%</div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-sm-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header">Traffic Fatalities</div>
+                        <div class="card-body">
+                            <div class="float-left pl-5">
+                                <h3 class="card-title text-danger">353</h3>
+                                <h6 class="card-title">Actual</h6>
+                            </div>
+                            <i class="fas fa-ambulance  fa-3x"></i>
+                            <div class="float-right pr-5">
+                                <h3 class="card-title text-success">353</h3>
+                                <h6 class="card-title">Target</h6>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="progress"><div class="progress-bar bg-danger" style="width:90%">90%</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
           
+
+          <!-- Historic crashes, injuries, fatatlities Chart -->
           
         </div>
         <!-- /.container-fluid -->
@@ -127,14 +203,14 @@
     <!-- D3 CDN-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
+    <script src="../js/sb-admin.min.js"></script>
     <!-- CountUP js-->
-    <script src="js/plugins/countUp.js"></script>
+    <script src="../js/plugins/countUp.js"></script>
     <!--Jquery Guage.js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gauge.js/1.3.6/gauge.min.js"></script>
 
     <!-- Main scripts for this page-->
-    
+    <script src="../js/traffic-safety.js"></script>
 
   </body>
 

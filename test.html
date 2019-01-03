@@ -5,12 +5,12 @@
 			  crossorigin="anonymous"></script>
 <script>
 
-fetch('Data/TrafficandSafety/sms_crash_data_olap.json')
+fetch('http://maps.udot.utah.gov/wadocuments/Data/TrafficandSafety/sms_crash_data_olap.json')
   .then(function(response) {
     return response.json();
   })
   .then(function(myJson) {
-    console.log(myJson[0].UDOT_REGION);
+    console.log(myJson[0].UDOT_REGION+"Fuck this");
   });
   //http://maps.udot.utah.gov/wadocuments/Apps/StrategicDirection/leonelnieto.github.io/2018/preserve-infrastructure.html
  </script>

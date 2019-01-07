@@ -1,5 +1,5 @@
 //Javascript file for traffic and safety dashboard
-crashStatistics(null,'quarter');
+crashStatistics(null,'week');
 function crashStatistics(region,period){
     var prd = formatDate(period);
     var dataUrl = 'https://dashboard.udot.utah.gov/resource/eecv-i83h.json';
@@ -43,8 +43,6 @@ function crashStatistics(region,period){
           console.error(fatalitiesActual.error);
         }
         //Fetch comparsion for previous period
-        console.log(backDatePreviousPeriod(period));
-        console.log(prd);
         var filterDate = ''
         if(!region){
             select = "?$select=region_name,count(crash_id),sum(total_fatalities),sum(total_serious_injuries)&$group=region_name&$where=crash_date>= and crash_date<='"+filterDate;

@@ -83,10 +83,10 @@
               console.error(piIndex.error);
             }
             //Fetch Metadata to see when table was last updated
-            fetch("https://dashboard.udot.utah.gov/api/views/metadata/v1/ikvc-y3rj").then(function(response){
+            fetch("https://udot.data.socrata.com//api/views/metadata/v1/ikvc-y3rj").then(function(response){
                 return response.json()
             }).then(function(data){
-                var d = new Date(data['dataUpdatedAt']);
+                var d = new Date(data['updatedAt']);
                 document.getElementById('sdindexupdate1').innerHTML = d.toUTCString();
                 document.getElementById('sdindexupdate2').innerHTML = d.toUTCString();
                 document.getElementById('sdindexupdate3').innerHTML = d.toUTCString();
@@ -236,7 +236,7 @@
         fetch("https://dashboard.udot.utah.gov/api/views/metadata/v1/b8iq-pg44").then(function(response){
                 return response.json()
             }).then(function(data){
-                var d = new Date(data['dataUpdatedAt']);
+                var d = new Date(data['updatedAt']);
                 document.getElementById('histdataTimeStamp').innerHTML = d.toUTCString();
         }).catch(function(error){
             console.log("Could not fetch dataset metadata: "+error)

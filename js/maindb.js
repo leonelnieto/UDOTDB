@@ -1,8 +1,69 @@
 //File writes all the charts and tables on index.html
+//Chart Plugins
+//Plug ins
+Chart.plugins.register({
+    afterDraw: function(chartInstance) {
+      if (chartInstance.config.options.showDatapoints) {
+        var helpers = Chart.helpers;
+        var ctx = chartInstance.chart.ctx;
+        var fontColor = helpers.getValueOrDefault(chartInstance.config.options.showDatapoints.fontColor, chartInstance.config.options.defaultFontColor);
+  
+        // render the value of the chart above the bar
+        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, 'normal', Chart.defaults.global.defaultFontFamily);
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        ctx.fillStyle = fontColor;
+  
+        chartInstance.data.datasets.forEach(function (dataset) {
+          for (var i = 0; i < dataset.data.length; i++) {
+            var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
+            var scaleMax = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._yScale.maxHeight;
+            var yPos = (scaleMax - model.y) / scaleMax >= 0.93 ? model.y + 20 : model.y - 5;
+            ctx.fillText(dataset.data[i], model.x, yPos);
+          }
+        });
+      }
+    }
+});
+  Chart.pluginService.register({
+    beforeDraw: function (chart) {
+      if (chart.config.options.elements.center) {
+        //Get ctx from string
+        var ctx = chart.chart.ctx;
+        //Get options from the center object in options
+        var centerConfig = chart.config.options.elements.center;
+        var fontStyle = centerConfig.fontStyle || 'proxima-nova';
+        var txt = centerConfig.text;
+        var color = centerConfig.color || '#000';
+        var sidePadding = centerConfig.sidePadding || 20;
+        var sidePaddingCalculated = (sidePadding/100) * (chart.innerRadius * 2)
+        //Start with a base font of 30px
+        ctx.font = "30px " + fontStyle;
+        //Get the width of the string and also the width of the element minus 10 to give it 5px side padding
+        var stringWidth = ctx.measureText(txt).width;
+        var elementWidth = (chart.innerRadius * 2) - sidePaddingCalculated;
+        // Find out how much the font can grow in width.
+        var widthRatio = elementWidth / stringWidth;
+        var newFontSize = Math.floor(30 * widthRatio);
+        var elementHeight = (chart.innerRadius * 2);
+        // Pick a new font size so it will not be larger than the height of label.
+        var fontSizeToUse = Math.min(newFontSize, elementHeight);
+        //Set font settings to draw it correctly.
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        var centerX = ((chart.chartArea.left + chart.chartArea.right) / 2);
+        var centerY = ((chart.chartArea.top + chart.chartArea.bottom) / 2);
+        ctx.font = fontSizeToUse+"px " + fontStyle;
+        ctx.fillStyle = color;
+        //Draw text in center
+        ctx.fillText(txt, centerX, centerY);
+      }
+    }
+});
+//Main Chart Draw
 (function(){
     'use strict';
     var dataUrl = 'https://dashboard.udot.utah.gov/resource/rqv9-ry2j.json?entity=Statewide';
-    
     var opts = {
         angle: 0, // The span of the gauge arc
         lineWidth: 0.24, // The line thickness
@@ -86,7 +147,7 @@
             fetch("https://udot.data.socrata.com//api/views/metadata/v1/ikvc-y3rj").then(function(response){
                 return response.json()
             }).then(function(data){
-                var d = new Date(data['updatedAt']);
+                var d = new Date(data['dataUpdatedAt']);
                 document.getElementById('sdindexupdate1').innerHTML = d.toUTCString();
                 document.getElementById('sdindexupdate2').innerHTML = d.toUTCString();
                 document.getElementById('sdindexupdate3').innerHTML = d.toUTCString();
@@ -138,8 +199,79 @@
         console.log("{^_^} Hello! UDOT we have a problem!"+error)
     });
 })();
-//Historical Line Chart
+//KPI Charts
 (function(){
+    url = "https://dashboard.udot.utah.gov/resource/rqv9-ry2j.json?entity=Statewide";
+    fetch(url).then(function(response){
+      return response.json();
+    }).then(function(j){
+      var chartOptions = {scales: {xAxes: [{ stacked: true }],yAxes: [{ stacked: true }]},responsive: true,animation: {duration: 3000, animateScale: true,animateRotate: true,easing:'easeOutCirc'},maintainAspectRatio: false,legend: {position: 'bottom',labels: {boxWidth: 20}},}
+      //Draw First Chart for PI
+      var targetMet = [parseFloat(j[0]["atms"]),parseFloat(j[0]["bridges"]),parseFloat(j[0]["pavement"]),parseFloat(j[0]["signals"])];
+      var targetRem = [100 - parseFloat(j[0]["atms"]),100 - parseFloat(j[0]["bridges"]),100 - parseFloat(j[0]["pavement"]),100 - parseFloat(j[0]["signals"])];
+      var kpiChartData = {
+        labels: ["ATMS: 9%","Bridges: 38%","Pavmts: 36%","Signals: 17%"],
+        datasets: [
+          {label: 'Target Met',
+           data:targetMet,
+           backgroundColor:'#5b87c6'},
+          {label: 'Target Remaining',
+           data:targetRem,
+           backgroundColor:'#eb7523'}
+        ]
+      }
+      var KPIChart = document.getElementById('piKPIChart');
+      new Chart(KPIChart,{
+        type: 'bar',
+        data:kpiChartData,
+        options: chartOptions
+      });
+      //Draw Second Chart for OM
+      targetMet = [parseFloat(j[0]["delay"]),parseFloat(j[0]["reliability"]),parseFloat(j[0]["mode_split"]),parseFloat(j[0]["snow"])];
+      targetRem = [100 - parseFloat(j[0]["delay"]), 100 - parseFloat(j[0]["reliability"]), 100 - parseFloat(j[0]["mode_split"]),100 - parseFloat(j[0]["snow"])];
+      kpiChartData = {
+          labels: ["I15 Delay: 30%","I15 Relia: 35%","Mode Split: 11%","Snow Rem: 24%"],
+          datasets: [
+            {label: 'Target Met',
+             data:targetMet,
+             backgroundColor:'#5b87c6'},
+            {label: 'Target Remaining',
+             data:targetRem,
+             backgroundColor:'#eb7523'}
+          ]
+        }
+      KPIChart = document.getElementById('omKPIChart');
+      new Chart(KPIChart,{
+        type: 'bar',
+        data:kpiChartData,
+        options: chartOptions
+      });
+      //Draw Third Chart for ZF
+      targetMet = [parseFloat(j[0]["ed_index"]),parseFloat(j[0]["if_index"]),parseFloat(j[0]["ii_index"]),parseFloat(j[0]["tc_index"]),parseFloat(j[0]["tf_index"]),parseFloat(j[0]["tsi_index"])];
+      targetRem = [100 - parseFloat(j[0]["ed_index"]), 100 - parseFloat(j[0]["if_index"]), 100 - parseFloat(j[0]["ii_index"]),100 - parseFloat(j[0]["tc_index"]),100 - parseFloat(j[0]["tf_index"]),100 - parseFloat(j[0]["tsi_index"])];
+      kpiChartData = {
+          labels: ["Equip Dam: 5%","UDOT Fatlt: 28%","Emp Injrs: 10%","Traf Cras: 8%","Traf Fatlt: 29%","Traf Injrs: 20%"],
+          datasets: [
+            {label: 'Target Met',
+             data:targetMet,
+             backgroundColor:'#5b87c6'},
+            {label: 'Target Remaining',
+             data:targetRem,
+             backgroundColor:'#eb7523'}
+          ]
+        }
+        KPIChart = document.getElementById('zfKPIChart');
+        new Chart(KPIChart,{
+        type: 'bar',
+        data:kpiChartData,
+        options: chartOptions
+      });
+    }).catch(function(err){
+      console.log("(*_*) if you see me there is the KPI Chart Data Fetch..."+err);
+    });
+})();
+//Historical Line Chart
+function histLineChart(){
     'use strict';
     var dataUrl = 'https://dashboard.udot.utah.gov/resource/b8iq-pg44.json?$select=avg(safety),avg(mobility),avg(infrastructure),year&$group=year&$order=year';
     //Fetch me some data
@@ -245,8 +377,8 @@
     }).catch(function(err) {
         console.log("Failed to retrive data: "+err)
     });
-})();
-
+}
+//Helper function
 function getPercentageChange(y1, y2){
     var dif = ((y2 - y1)/y1)*100;
 

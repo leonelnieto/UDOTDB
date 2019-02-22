@@ -1,4 +1,6 @@
 /*UDOT Dashboard Style Sheet */
 /*Created by leonel nieto */
 
-/*Guages CSS style*/
+.nounderline {
+    text-decoration: none !important
+  }

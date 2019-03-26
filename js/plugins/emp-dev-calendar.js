@@ -8,8 +8,17 @@ fetch(
     console.log(j);
     var calendarEl = document.getElementById("calendar");
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      plugins: ["dayGrid"],
+      header: { center: "dayGridMonth,timeGridWeek" },
+      plugins: ["dayGrid", "timeGrid", "list"],
       timeZone: "UTC",
+      eventRender: function(info) {
+        var tooltip = new Tooltip(info.el, {
+          title: info.event.extendedProps.description,
+          placement: "top",
+          trigger: "hover",
+          container: "body"
+        });
+      },
       events: j
     });
 

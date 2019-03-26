@@ -1,7 +1,8 @@
 [
   {
     "id": "a",
-    "title": "Leadership Essentials",
+    "title": "Leadership Essentials I",
+    "description": "description for All Day Event",
     "start": "2019-03-27T08:00:00",
     "end": "2019-03-27T09:00:00",
     "allDay": false,
@@ -11,6 +12,7 @@
   {
     "id": "b",
     "title": "Organizational Improvement",
+    "description": "description for All Day Event",
     "start": "2019-07-10T08:30:00",
     "end": "2019-07-10T15:30:00",
     "allDay": false,
@@ -20,6 +22,7 @@
   {
     "id": "c",
     "title": "Leadership Essentials",
+    "description": "description for All Day Event",
     "start": "2019-05-15T08:30:00",
     "end": "2019-05-15T15:30:00",
     "allDay": false,

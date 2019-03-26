@@ -1,5 +1,5 @@
 fetch(
-  "http://maps.udot.utah.gov/wadocuments/Data/EmpDev/course_schedule_data.json"
+  "https://maps.udot.utah.gov/wadocuments/Data/EmpDev/course_schedule_data.json"
 )
   .then(function(response) {
     return response.json();

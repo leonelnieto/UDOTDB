@@ -1,5 +1,5 @@
 fetch(
-  "https://leonelnieto.github.io/UDOTDB/Data/EmpDev/course_schedule_data.json"
+  "http://maps.udot.utah.gov/wadocuments/Data/EmpDev/course_schedule_data.json"
 )
   .then(function(response) {
     return response.json();
@@ -11,14 +11,7 @@ fetch(
       header: { center: "dayGridMonth,timeGridWeek" },
       plugins: ["dayGrid", "timeGrid", "list"],
       timeZone: "UTC",
-      eventRender: function(info) {
-        var tooltip = new Tooltip(info.el, {
-          title: info.event.extendedProps.description,
-          placement: "top",
-          trigger: "hover",
-          container: "body"
-        });
-      },
+      classNames:["fc-event"],
       events: j
     });
 

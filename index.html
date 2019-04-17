@@ -19,17 +19,9 @@
     <link href="css/udotdb.css" rel="stylesheet">
   </head>
   <body id="page-top" class="sidebar-toggled">
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-      <a class="navbar-brand mr-1" href="https://www.udot.utah.gov/main/f?p=100:6:0::::V,T:,1">
-        <img src="img/UDOT-Logo-PNG.png" class="d-inline-block align-top">
-      </a>
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-      </button>
-    </nav>
+    <navbar></navbar>
     <div id="wrapper">
       <sidebar></sidebar>
-
       <div id="content-wrapper">
         <div class="container-fluid">
           <div class="row">
@@ -284,8 +276,7 @@
     </a>
     <!-- Bootstrap core JavaScript-->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <!-- I think we will not use Mustache because it does not fully protect against XSS attacks like I thought it would. Don't forget to delete this library if you decide not to use it. -->
-    <!-- <script src="js/plugins/mustache.js"></script> -->
+    <script src="js/template.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <!-- Core plugin JavaScript-->
@@ -303,6 +294,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gauge.js/1.3.6/gauge.min.js"></script>
     <!-- Main scripts for this page-->
     <script src="js/maindb.js"></script>
-    <script src="js/template.js"></script>
   </body>
 </html>

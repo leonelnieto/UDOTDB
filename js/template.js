@@ -1,5 +1,5 @@
 var sidebarTemplate = 
-        `<ul class="sidebar navbar-nav toggled">
+    `<ul class="sidebar navbar-nav toggled">
         <li class="nav-item active">
         <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -51,4 +51,15 @@ var sidebarTemplate =
         </li>
         </ul>`
 
+var navbarTemplate = 
+    `<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+        <a class="navbar-brand mr-1" href="https://www.udot.utah.gov/main/f?p=100:6:0::::V,T:,1">
+            <img src="img/UDOT-Logo-PNG.png" class="d-inline-block align-top">
+        </a>
+        <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>`
+
 $('sidebar').html(sidebarTemplate);
+$('navbar').html(navbarTemplate);

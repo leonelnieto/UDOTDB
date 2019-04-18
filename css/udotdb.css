@@ -13,3 +13,18 @@
 .fc-day-grid-event .fc-content {
   white-space: normal !important;
 }
+navbar ul{
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+}
+navbar ul li a.nav-link{
+  font-size: 0.65rem;
+  color:rgba(255, 255, 255, 0.5);
+}
+navbar ul li a.nav-link:hover{
+  color:#fff;
+}

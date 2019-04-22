@@ -3,7 +3,7 @@ const linkHeader = window.location.href.slice(0, window.location.href.indexOf("d
 var sidebarTemplate = 
     `<ul class="sidebar navbar-nav toggled">
         <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="${linkHeader}dashboard/index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Main Dashboard</span>
         </a>
@@ -42,12 +42,12 @@ var sidebarTemplate =
             <span>Trans Comm</span></a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="/404.html">
+        <a class="nav-link" href="${linkHeader}dashboard/404.html">
             <i class="fas fa-fw fa-chart-line"></i>
             <span>Fed Measures</span></a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="/404.html">
+        <a class="nav-link" href="${linkHeader}dashboard/404.html">
             <i class="fas fa-fw fa-road"></i>
             <span>Freeeway Metrics</span></a>
         </li>
@@ -56,7 +56,7 @@ var sidebarTemplate =
 var navbarTemplate = 
     `<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
         <a class="navbar-brand mr-1" href="https://www.udot.utah.gov/main/f?p=100:6:0::::V,T:,1">
-            <img src="${linkHeader}/dashboard/img/UDOT-Logo-PNG.png" class="d-inline-block align-top">
+            <img src="${linkHeader}dashboard/img/UDOT-Logo-PNG.png" class="d-inline-block align-top">
         </a>
         <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
             <i class="fas fa-bars"></i>

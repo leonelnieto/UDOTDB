@@ -117,7 +117,7 @@ Chart.plugins.register({
             if (!zfIndex.error) {
                 zfIndex.start();
             } else {
-              console.error(zfIndex.error);
+              console.error(zfIndex.error);
             }
             target = document.getElementById('omGuageChart'); // your canvas element
             gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
@@ -129,7 +129,7 @@ Chart.plugins.register({
             if (!omIndex.error) {
                 omIndex.start();
             } else {
-              console.error(omIndex.error);
+              console.error(omIndex.error);
             }
             target = document.getElementById('piGuageChart'); // your canvas element
             gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
@@ -141,7 +141,7 @@ Chart.plugins.register({
             if (!piIndex.error) {
                 piIndex.start();
             } else {
-              console.error(piIndex.error);
+              console.error(piIndex.error);
             }
             //Fetch Metadata to see when table was last updated
             fetch("https://udot.data.socrata.com//api/views/metadata/v1/ikvc-y3rj").then(function(response){

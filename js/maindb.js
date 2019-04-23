@@ -101,11 +101,11 @@ Chart.plugins.register({
             var currentMobility = parseFloat(data[0].mobility);
             var currentInfra = parseFloat(data[0].infrastructure);
             var options = {
-              useEasing: true,
-              useGrouping: true,
-              separator: ',',
-              decimal: '.',
-              suffix: '%'
+              useEasing: true,
+              useGrouping: true,
+              separator: ',',
+              decimal: '.',
+              suffix: '%'
             };
             var target = document.getElementById('zfGuageChart'); // your canvas element
             var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!

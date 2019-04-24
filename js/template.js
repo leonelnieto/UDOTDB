@@ -28,10 +28,18 @@ var sidebarTemplate = `<ul class="sidebar navbar-nav toggled">
             <a class="dropdown-item" href="regions/region4.html">Region 4</a>
         </div>
         </li>
-        <li class="nav-item">
-        <a class="nav-link" href="congestion.html" target="new">
-            <i class="fas fa-fw fa-chart-bar"></i>
-            <span>Congestion</span></a>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="congestion" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-fw fa-chart-bar"></i>
+                <span>Congestion Dashboard</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="congestion">
+                <a class="dropdown-item" target="new" href="http://arcg.is/4511W">Statewide</a>
+                <a class="dropdown-item" target="new" href="http://arcg.is/zv4nX">Region 1</a>
+                <a class="dropdown-item" target="new" href="http://arcg.is/11P58y">Region 2</a>
+                <a class="dropdown-item" target="new" href="http://arcg.is/09m1Wb">Region 3</a>
+                <a class="dropdown-item" target="new" href="http://arcg.is/1Tverm">Region 4</a>
+            </div>
         </li>
         <li class="nav-item">
         <a class="nav-link" href="http://udot.thirdparty.iteris-pems.com/" target="new">

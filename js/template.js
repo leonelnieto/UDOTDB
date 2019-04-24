@@ -16,16 +16,16 @@ var sidebarTemplate = `<ul class="sidebar navbar-nav toggled">
             <span>UDOT</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="divisions/operations.html">Operations</a>
-            <a class="dropdown-item" href="divisions/project-development.html">Project Devlpmt</a>
-            <a class="dropdown-item" href="divisions/technology-innovation.html">Tech &amp; Innovation</a>
-            <a class="dropdown-item" href="divisions/employee-development.html">Emp Devlpmt</a>
+            <a class="dropdown-item" href="${linkHeader}dashboard/divisions/operations.html">Operations</a>
+            <a class="dropdown-item" href="${linkHeader}dashboard/divisions/project-development.html">Project Devlpmt</a>
+            <a class="dropdown-item" href="${linkHeader}dashboard/divisions/technology-innovation.html">Tech &amp; Innovation</a>
+            <a class="dropdown-item" href="${linkHeader}dashboard/divisions/employee-development.html">Emp Devlpmt</a>
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">Regions</h6>
-            <a class="dropdown-item" href="regions/region1.html">Region 1</a>
-            <a class="dropdown-item" href="regions/region2.html">Region 2</a>
-            <a class="dropdown-item" href="regions/region3.html">Region 3</a>
-            <a class="dropdown-item" href="regions/region4.html">Region 4</a>
+            <a class="dropdown-item" href="${linkHeader}dashboard/regions/region1.html">Region 1</a>
+            <a class="dropdown-item" href="${linkHeader}dashboard/regions/region2.html">Region 2</a>
+            <a class="dropdown-item" href="${linkHeader}dashboard/regions/region3.html">Region 3</a>
+            <a class="dropdown-item" href="${linkHeader}dashboard/regions/region4.html">Region 4</a>
         </div>
         </li>
         <li class="nav-item dropdown">

@@ -1,7 +1,9 @@
-const linkHeader = window.location.href.slice(0, window.location.href.indexOf("dashboard"));
+const linkHeader = window.location.href.slice(
+  0,
+  window.location.href.indexOf("dashboard")
+);
 
-var sidebarTemplate = 
-    `<ul class="sidebar navbar-nav toggled">
+var sidebarTemplate = `<ul class="sidebar navbar-nav toggled">
         <li class="nav-item active">
         <a class="nav-link" href="${linkHeader}dashboard/index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -27,7 +29,7 @@ var sidebarTemplate =
         </div>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="http://uplan.maps.arcgis.com/apps/MapSeries/index.html?appid=e39cf52788a448ec929fe6905f240257" target="new">
+        <a class="nav-link" href="congestion.html" target="new">
             <i class="fas fa-fw fa-chart-bar"></i>
             <span>Congestion</span></a>
         </li>
@@ -51,22 +53,21 @@ var sidebarTemplate =
             <i class="fas fa-fw fa-road"></i>
             <span>Freeeway Metrics</span></a>
         </li>
-        </ul>`
+        </ul>`;
 
-var navbarTemplate = 
-    `<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+var navbarTemplate = `<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
         <a class="navbar-brand mr-1" href="https://www.udot.utah.gov/main/f?p=100:6:0::::V,T:,1">
             <img src="${linkHeader}dashboard/img/UDOT-Logo-PNG.png" class="d-inline-block align-top">
         </a>
         <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
             <i class="fas fa-bars"></i>
         </button>
-        <ul>
-            <li>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
                 <a class="nav-link" href="http://www.udot.utah.gov/strategic-direction/">Strategic Direction</a>
             </li>
         </ul>
-    </nav>`
+    </nav>`;
 
-$('sidebar').html(sidebarTemplate);
-$('navbar').html(navbarTemplate);
+$("sidebar").html(sidebarTemplate);
+$("navbar").html(navbarTemplate);

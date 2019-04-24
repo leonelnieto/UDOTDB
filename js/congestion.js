@@ -7,19 +7,19 @@
   console.log(params);
   switch (params) {
     case "r1":
-      var dbSrc = "https://arcg.is/zv4nX";
+      var dbSrc = "http://arcg.is/zv4nX";
       break;
     case "r2":
-      dbSrc = "https://arcg.is/11P58y";
+      dbSrc = "http://arcg.is/11P58y";
       break;
     case "r3":
       dbSrc = "https://arcg.is/09m1Wb";
       break;
     case "r4":
-      dbSrc = "https://arcg.is/1Tverm";
+      dbSrc = "http://arcg.is/1Tverm";
       break;
     case undefined:
-      dbSrc = "https://arcg.is/4511W";
+      dbSrc = "http://arcg.is/4511W";
       break;
   }
   document.getElementById("congestionDashboard").src = dbSrc;

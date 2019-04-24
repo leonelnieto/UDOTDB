@@ -18,7 +18,7 @@ var sidebarTemplate = `<ul class="sidebar navbar-nav toggled">
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <a class="dropdown-item" href="divisions/operations.html">Operations</a>
             <a class="dropdown-item" href="divisions/project-development.html">Project Devlpmt</a>
-            <a class="dropdown-item" href="divisions/technology-innovation.html">Tech &amp; Inovation</a>
+            <a class="dropdown-item" href="divisions/technology-innovation.html">Tech &amp; Innovation</a>
             <a class="dropdown-item" href="divisions/employee-development.html">Emp Devlpmt</a>
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">Regions</h6>

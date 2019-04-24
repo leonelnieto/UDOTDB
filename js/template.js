@@ -69,5 +69,12 @@ var navbarTemplate = `<nav class="navbar navbar-expand navbar-dark bg-dark stati
         </ul>
     </nav>`;
 
+var footerTemplate = `<div class="container my-auto">
+        <div class="copyright text-center my-auto">
+        <span>Copyright © UDOT Data and Analytics Nerds</span>
+        </div>
+    </div>`
+
 $("sidebar").html(sidebarTemplate);
 $("navbar").html(navbarTemplate);
+$("footer").html(footerTemplate);
